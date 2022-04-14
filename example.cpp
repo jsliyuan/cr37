@@ -283,18 +283,18 @@ int flag1 = start_idx;
 for(set<string>::iterator g=fn10_13_15.begin();g!=fn10_13_15.end();g++)
 {
   set<string> inter; 
-  set<string> add_f_g; // 存放fn3_14+g
+  set<string> add_f_g; 
   string anf_g;
   anf_g=*g; 
   cout<<anf_g<<endl;
-  BooleanFun g3(6,anf_g); //重构booleanfun g3
+  BooleanFun g3(6,anf_g); //BooleanFun g3
 
-//g+h\in f3_14 
+//g+h\in Ffn10_15 
    for(set<string>::iterator h=H3_6_8.begin();h!=H3_6_8.end();h++){
     string anf_h;
     anf_h=*h; 
-    BooleanFun hg(6,anf_h); //重构booleanfun h
-    hg.add(g3);// h+g=hg
+    BooleanFun hg(6,anf_h); //BooleanFun H3_6_8
+    hg.add(g3);// h+g
     string anf;
     anf=hg.get_anf();
 
@@ -326,7 +326,7 @@ for(set<string>::iterator g=fn10_13_15.begin();g!=fn10_13_15.end();g++)
       for (set<string>::iterator magic32=fn6_6.begin();magic32!=fn6_6.end();magic32++) {
           string anf_magic32;
           anf_magic32=*magic32;
-          BooleanFun fmm(6,anf_magic32) ;//重构fn6_6
+          BooleanFun fmm(6,anf_magic32) ;//Ffn6(6)
         fmm.apply_affine_trans(*trans);
         fmm.trim_degree_below(3);
         fmm.add(g3);
@@ -355,7 +355,7 @@ for(set<string>::iterator g=fn10_13_15.begin();g!=fn10_13_15.end();g++)
 }
 cout<<"find "<<flag<<endl;
 
-//输出不希望的g集合
+//
 for (set<string>::iterator n=bad_g.begin();n!=bad_g.end();n++) {
       string anf_g1;
       anf_g1= *n;
