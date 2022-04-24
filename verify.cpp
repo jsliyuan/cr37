@@ -75,11 +75,11 @@ while(!fin.eof())
   anf10_7=f1-> get_coe_list();
   //store coefficient ANF of F_fn10(7)
   fn10_7.insert(anf10_7); 
-  num++; 
-  cout<<f1->get_anf()<<endl;
+ // num++; 
+ // cout<<f1->get_anf()<<endl;
 }
 fin.close();
-cout<<num<<endl;
+//cout<<num<<endl;
 
 num=0;
 fin1.open( "fn3_14.txt", ios::in);  
@@ -100,11 +100,11 @@ while(!fin1.eof())
   anf_fn3_14=f2->get_coe_list();
   //store coefficient ANF of F_fn3(14)
    fn3_14.insert(anf_fn3_14);   
-    cout<<f2->get_anf()<<endl;
-   num++; 
+ //   cout<<f2->get_anf()<<endl;
+ //  num++; 
 } 
 fin1.close();
-cout<<num<<endl;
+//cout<<num<<endl;
 
 int num1=0;
 fin2.open( "f3_12_14.txt", ios::in);  
@@ -125,11 +125,11 @@ while(!fin2.eof())
   anf_fn3_12_14=f3->get_coe_list();
   //store coefficient ANF of F_fn3(12)\cap F_fn3(14) 
    fn3_12_14.insert(anf_fn3_12_14); 
-   num1++;   
-   cout<<f3->get_anf()<<endl;
+ //  num1++;   
+//   cout<<f3->get_anf()<<endl;
 } 
 fin2.close();
-cout<<"num1 is "<<num1<<endl;
+//cout<<"num1 is "<<num1<<endl;
 
  num1=0;
 fin2.open( "f10_9.txt", ios::in);  
@@ -150,11 +150,11 @@ while(!fin2.eof())
   anf_fn10_9=f4->get_coe_list();
   //store coefficient ANF of F_fn10(9) 
    fn10_9.insert(anf_fn10_9); 
-   num1++;   
-   cout<<f4->get_anf()<<endl;
+ //  num1++;   
+//   cout<<f4->get_anf()<<endl;
 } 
 fin2.close();
-cout<<"num1 is "<<num1<<endl;
+//cout<<"num1 is "<<num1<<endl;
 //int count=0;
 
 int flag=0;
@@ -189,11 +189,12 @@ for (set<string>::iterator g=fn3_12_14.begin();g!=fn3_12_14.end();g++)
       G3.insert(*g);
     }    
 }
-cout<<"flag is "<<flag<<endl;
- for(set<string>::iterator term=G3.begin();term!=G3.end();term++)
+cout<<"In the first step, the number of g is "<<flag<<endl;
+    //In the first step, print all possible 6912 homogeneous g in the form of truth table .
+/* for(set<string>::iterator term=G3.begin();term!=G3.end();term++)
 {
         cout<<*term<<endl;
-} 
+} */
 
 for (set<string>::iterator g1=G3.begin();g1!=G3.end();g1++) 
 {
@@ -222,6 +223,7 @@ for (set<string>::iterator g1=G3.begin();g1!=G3.end();g1++)
     }    
 }
 //if flag1==0, then there exists no valid g3.
-cout<<"flag1 is "<<flag1<<endl;
+    if(flag1==0)
+    {cout<<"Cannot achieve 21 "<<flag1<<endl;}
   return 0;
 }
