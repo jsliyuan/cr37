@@ -6,13 +6,11 @@ Search_result.cpp is used to verify that the nl3 of fn10||fn6(A^{-1}x+b)+g canno
 -g++ -o example.out search_result.cpp boolean_fun.cpp affine_trans.cpp
 -./example.out
 
-classifications.cpp is used to generate all homogeneous Boolean Functions in the sets of F_fn3(12) and F_fn3(14) in the form of truth table, 
-stored in "fn3_12_14.txt".
+classifications.cpp is used to generate a "fn3_12_14.txt" to store all homogeneous Boolean Functions in the sets of F_fn3(12) and F_fn3(14) in the form of truth table.
 -g++ classifications.cpp -fopenmp -o classifications
 -./example.out
 
-classification1.cpp is used to generate all homogeneous Boolean Functions in the sets of F_fn9(13) and F_fn9(15) in the form of truth table, 
-stored in "fn9_13_15.txt".
+classification1.cpp is used to generate a "fn9_13_15.txt" to store all homogeneous Boolean Functions in the sets of F_fn9(13) and F_fn9(15) in the form of truth table.
 -g++ -fopenmp -o example.out classification1.cpp 
 -./example.out 
 
@@ -27,3 +25,19 @@ verify1.cpp is used to determine the third-order nonlinearity of fn2||fn9+g3 can
 nonlinearity.cpp is used to calculate the third-order nonlinearity of fn1-fn10 and max_{g:deg(g)=3} nl2(fni + g) for i\in [10].
 -g++ -fopenmp -o example.out nonlinearity.cpp
 -./example.out
+
+1. f10_15.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn10(15);
+2. f10_9.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn10(9);
+3. f2_6.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn2(6);
+4. f2_8.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn2(8);
+5. f6_6.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn6(6);
+6. f9_15.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn9(15);
+
+7. f10_af.txt: storing the set of (Ai,bi) in the form of, e,g, "[100000 010000 001000 000100 000010 000001]000000", where A={A_1,...,A_l} for l= 888832, T=Aix+bi such that (Ai,bi)f=f(Aix+bi) enumerates the orbit the fn10.
+The size of A is 65112.
+
+
+
+
+
+
