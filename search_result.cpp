@@ -190,7 +190,7 @@ while(!fin1.eof())
         }
     }
      //flag represents the number of possible g corresponding to each A,b
-      cout<< "i: "<<flag1++<<" "<< flag<<"possible g"<<endl;
+      cout<< "i: "<<flag1++<<";"<<" the number of possible g: "<< flag<<endl;
    //   cout<< line_anf<<" "<<*magic32_trans.begin()<<endl;
       //print valid A,b
       if(all_in_A)
