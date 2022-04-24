@@ -7,9 +7,10 @@
 #include <stdio.h>
 #include <time.h>
 #include<omp.h>
-int quard1[1048576][64];//六元三阶
-int quard2[1024][32];//五元二阶
+int quard1[1048576][64];//homogeneous 6-variable Boolean functions of degree 3
+int quard2[1024][32];//homogeneous 5-variable Boolean functions of degree 2
 
+//store fn1-fn10
 int f1[64];
 int f2[64];
 int f3[64];
@@ -165,7 +166,7 @@ void assign9(){ //The truth table of fn10:00000000000000000000000000000011000000
     }
 }
 
-void cal_quard1(){//六元三阶
+void cal_quard1(){//generate homogeneous 6-variable Boolean functions of degree 3
     int a,x;
     int bin_a[20];
     int t[]={56,52,50,49,44,42,\
@@ -189,7 +190,7 @@ void cal_quard1(){//六元三阶
     }
 }
 
-void cal_quard2(){//
+void cal_quard2(){//homogeneous 5-variable Boolean functions of degree 2
     int a,x;
     int bin_a[10];
     int t[]={24,20,18,17,\
@@ -211,6 +212,7 @@ void cal_quard2(){//
         }
     }
 }
+//calculate the first-order nonlinearity
 int nlf1(int* tt) {
  int buf[32];
  register int i, j, k;
@@ -227,10 +229,10 @@ int nlf1(int* tt) {
  return 16 - (max >> 1);
 }
 
-
+//calculate the second-order nonlinearity
 int nlf2(int* tt) {
  int i, j, k1, _2order_nlf = INT_MAX;
- // need a transform from RSTT to TT
+ // need a transformation from RSTT to TT
 
  register int nlf_t;
  int _2order[4] = { INT_MAX ,INT_MAX,INT_MAX,INT_MAX };
