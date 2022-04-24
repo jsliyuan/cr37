@@ -99,7 +99,7 @@ while(!fin1.eof())
 } 
 fin1.close();
 
-fin2.open( "f3_12_14.txt", ios::in);  
+fin2.open( "fn3_12_14.txt", ios::in);  
 if(fin1.fail())
 {
   cout<<"no file!"<<endl;
