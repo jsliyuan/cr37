@@ -10,7 +10,7 @@
 int quard1[1048576][64];//homogeneous 6-variable Boolean functions of degree 3
 int quard2[1024][32];//homogeneous 5-variable Boolean functions of degree 2
 
-//store fn1-fn10
+//store the truth table of fn1-fn10 
 int f1[64];
 int f2[64];
 int f3[64];
@@ -212,7 +212,7 @@ void cal_quard2(){//homogeneous 5-variable Boolean functions of degree 2
         }
     }
 }
-//calculate the first-order nonlinearity
+//calculate the first-order nonlinearity of 5-variable Boolean functions
 int nlf1(int* tt) {
  int buf[32];
  register int i, j, k;
@@ -229,7 +229,7 @@ int nlf1(int* tt) {
  return 16 - (max >> 1);
 }
 
-//calculate the second-order nonlinearity
+//calculate the second-order nonlinearity of 6-variable Boolean functions
 int nlf2(int* tt) {
  int i, j, k1, _2order_nlf = INT_MAX;
  // need a transformation from RSTT to TT
