@@ -12,7 +12,7 @@ int quard2[1024][32];//homogenous 6-variable Boolean function of degree 2
 
 int fn[64];//store the truth table of fn_10
  
-  //Store F_（fn_3）（a）   
+  //Store F_（fn_3）（r）   
 int select_f3_8[2304][64];   
 int select_f3_10[71680][64];;
 int select_f3_12[628992][64];
@@ -81,6 +81,7 @@ void cal_quard2(){
         }
     }
 }
+//calculate the first-order nonlinearity of 5-variable Boolean functions
 int nlf1(int* tt) {
  int buf[32];
  register int i, j, k;
@@ -97,10 +98,10 @@ int nlf1(int* tt) {
  return 16 - (max >> 1);
 }
 
-
+//calculate the second-order nonlinearity of 6-variable Boolean functions
 int nlf2(int* tt) {
  int i, j, k1, _2order_nlf = INT_MAX;
- // need a transform from RSTT to TT
+ // need a transformation from RSTT to TT
 
  register int nlf_t;
  int _2order[4] = { INT_MAX ,INT_MAX,INT_MAX,INT_MAX };
@@ -212,10 +213,10 @@ int main()
         }
     fclose(w1);
  
-    printf("the number of 8 is %d\n",flag1);
-    printf("the number of 10 is %d\n",flag2);
-    printf("the number of 12 is %d\n",flag3);
-    printf("the number of 14 is %d\n",flag4);
+    printf("the number of r=8 is %d\n",flag1);
+    printf("the number of r=10 is %d\n",flag2);
+    printf("the number of r=12 is %d\n",flag3);
+    printf("the number of r=14 is %d\n",flag4);
     printf("The program has ended.\n");
     system("pause");
     return 0;
