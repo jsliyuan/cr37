@@ -34,7 +34,7 @@ nonlinearity.cpp is used to calculate the third-order nonlinearity of fn1-fn10 a
 6. f9_15.txt: storing the truth table of all homogeneous Boolean functions of degree 3 in F_fn9(15);
 
 7. f10_af.txt: storing the set of (Ai,bi) in the form of, e,g, "[100000 010000 001000 000100 000010 000001]000000", where A={A_1,...,A_l} for l= 888832, T=Aix+bi such that (Ai,bi)f=f(Aix+bi) enumerates the orbit the fn10.
-The size of A is 65112.
+The size of (Ai,bi) is 65112.
 
 
 
