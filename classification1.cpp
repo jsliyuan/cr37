@@ -12,7 +12,7 @@ int quard2[1024][32];//homogenous 6-variable Boolean function of degree 2
 
 int fn[64];//store the truth table of fn_9
  
-  //Store F_(fn_9)（a）   
+  //Store F_(fn_9)（r）   
 int select_f9_5[6][64]; 
 int select_f9_7[298][64];  
 int select_f9_9[12540][64];
@@ -83,6 +83,7 @@ void cal_quard2(){
         }
     }
 }
+//calculate the first-order nonlinearity
 int nlf1(int* tt) {
  int buf[32];
  register int i, j, k;
@@ -99,10 +100,10 @@ int nlf1(int* tt) {
  return 16 - (max >> 1);
 }
 
-
+//calculate the second-order nonlinearity
 int nlf2(int* tt) {
  int i, j, k1, _2order_nlf = INT_MAX;
- // need a transform from RSTT to TT
+ // need a transformation from RSTT to TT
 
  register int nlf_t;
  int _2order[4] = { INT_MAX ,INT_MAX,INT_MAX,INT_MAX };
@@ -230,12 +231,12 @@ int main()
         }
     fclose(w1);
  
-    printf("the number of 5 is %d\n",flag1);
-    printf("the number of 7 is %d\n",flag2);
-    printf("the number of 9 is %d\n",flag3);
-    printf("the number of 11 is %d\n",flag4);
-    printf("the number of 13 is %d\n",flag5);
-    printf("the number of 15 is %d\n",flag6);
+    printf("the number of r=5 is %d\n",flag1);
+    printf("the number of r=7 is %d\n",flag2);
+    printf("the number of r=9 is %d\n",flag3);
+    printf("the number of r=11 is %d\n",flag4);
+    printf("the number of r=13 is %d\n",flag5);
+    printf("the number of r=15 is %d\n",flag6);
     printf("The program has ended.\n");
     system("pause");
     return 0;
