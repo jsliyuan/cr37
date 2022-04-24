@@ -75,11 +75,11 @@ while(!fin.eof())
   anf2_6=f1-> get_coe_list();
   //store coefficient ANF of F_fn10(7)
   fn2_6.insert(anf2_6); 
-  num++; 
-  cout<<f1->get_anf()<<endl;
+  //num++; 
+  //cout<<f1->get_anf()<<endl;
 }
 fin.close();
-cout<<num<<endl;
+//cout<<num<<endl;
 
 num=0;
 fin1.open( "f9_15.txt", ios::in);  
@@ -100,11 +100,11 @@ while(!fin1.eof())
   anf_f9_15=f2->get_coe_list();
   //store coefficient ANF of F_fn3(14)
    fn9_15.insert(anf_f9_15);   
-    cout<<f2->get_anf()<<endl;
-   num++; 
+  //  cout<<f2->get_anf()<<endl;
+  // num++; 
 } 
 fin1.close();
-cout<<num<<endl;
+//cout<<num<<endl;
 
 int num1=0;
 fin2.open( "f2_8.txt", ios::in);  
@@ -125,8 +125,8 @@ while(!fin2.eof())
   anf_fn2_8=f3->get_coe_list();
   //store coefficient ANF of F_fn3(12)\cap F_fn3(14) 
    fn2_8.insert(anf_fn2_8); 
-   num1++;   
-   cout<<f3->get_anf()<<endl;
+ //  num1++;   
+ //  cout<<f3->get_anf()<<endl;
 } 
 fin2.close();
 cout<<"num1 is "<<num1<<endl;
@@ -150,11 +150,11 @@ while(!fin2.eof())
   anf_fn9_13_15=f4->get_coe_list();
   //store coefficient ANF of F_fn10(9) 
    fn9_13_15.insert(anf_fn9_13_15); 
-   num1++;   
-   cout<<f4->get_anf()<<endl;
+ //  num1++;   
+ //  cout<<f4->get_anf()<<endl;
 } 
 fin2.close();
-cout<<"num1 is "<<num1<<endl;
+//cout<<"num1 is "<<num1<<endl;
 //int count=0;
 
 int flag=0;
@@ -182,29 +182,8 @@ for (set<string>::iterator g=fn9_15.begin();g!=fn9_15.end();g++)
       G3.insert(*g);
     }    
 }
-cout<<"flag is "<<flag<<endl;
+if(flag==0)
+    {cout<<"Cannot achieve 21. "<<" Find "<<flag<<" possible g."<<endl;}
 
-/*for (set<string>::iterator g1=G3.begin();g1!=G3.end();g1++) 
-{
-   int allin=true;
-     for(set<string>::iterator l=fn10_9.begin();l!=fn10_9.end();l++)
-     {
-        string result1;
-       //let h=g1+ l
-        result1=string_xor(*g1,*l);  
-        //store coefficient_anf of g=s0+ti
-        if(fn3_12_14.find(result1)==fn3_12_14.end())
-            {
-              allin = false;
-              break;
-            }       
-    } 
-    if(allin)
-    {
-      flag1++;
-    }    
-}
-//if flag1==0, then there exists no valid g3.
-cout<<"flag1 is "<<flag1<<endl;*/
   return 0;
 }
