@@ -531,16 +531,16 @@ int main()
             if(t10==15)
              flag10_15+=1;
     }    
-     printf("\n Ffn1(r) r=4: %d; r=6: %d; r=8: %d; r=10: %d; r=12: %d; r=14: %d; r=16: %d. \n",flag1_4,flag1_6,flag1_8,flag1_10,flag1_12,flag1_14,flag1_16);
-     printf("\n Ffn2(r) r=6: %d; r=8: %d, r=10:%d; r=12: %d; r=14: %d; r=16: %d. \n",flag2_6,flag2_8,flag2_10,flag2_12,flag2_14,flag2_16);
-     printf("\n Ffn3(r) r=8: %d; r=10:%d; r=12:%d; r=14: %d. \n",flag3_8,flag3_10,flag3_12,flag3_14);
-     printf("\n Ffn4(r) r=2: %d; r=4: %d; r=6: %d; r=8:  %d; r=10: %d; r=12: %d; r=14: %d; r=16: %d. \n",flag4_2,flag4_4,flag4_6,flag4_8,flag4_10,flag4_12,flag4_14,flag4_16);
-     printf("\n Ffn5(r) r=4: %d; r=6: %d; r=8: %d; r=10: %d; r=12: %d; r=14: %d. \n",flag5_4,flag5_6,flag5_8,flag5_10,flag5_12,flag5_14);
-     printf("\n Ffn6(r) r=6: %d; r=8: %d; r=10:%d; r=12: %d; r=14: %d. \n",flag6_6,flag6_8,flag6_10,flag6_12,flag6_14);
-     printf("\n Ffn7(r) r=1: %d; r=3: %d; r=5: %d; r=7:  %d; r=9:  %d; r=11: %d; r=13: %d; r=15: %d; r=17: %d. \n",flag7_1,flag7_3,flag7_5,flag7_7,flag7_9,flag7_11,flag7_13,flag7_15,flag7_17);
-     printf("\n Ffn8(r) r=3: %d; r=5: %d; r=7: %d; r=9:  %d; r=11: %d; r=13: %d; r=15: %d. \n",flag8_3,flag8_5,flag8_7,flag8_9,flag8_11,flag8_13,flag8_15);
-     printf("\n Ffn9(r) r=5: %d; r=7: %d; r=9: %d; r=11: %d; r=13: %d; r=15: %d. \n",flag9_5,flag9_7,flag9_9,flag9_11,flag9_13,flag9_15);
-     printf("\n Ffn10(r)r=7: %d; r=9: %d; r=11:%d; r=13: %d; r=15: %d. \n",flag10_7,flag10_9,flag10_11,flag10_13,flag10_15);
+     printf("\n |Ffn1(r)| r=4: %d; r=6: %d; r=8: %d; r=10: %d; r=12: %d; r=14: %d; r=16: %d. \n",flag1_4,flag1_6,flag1_8,flag1_10,flag1_12,flag1_14,flag1_16);
+     printf("\n |Ffn2(r)| r=6: %d; r=8: %d, r=10:%d; r=12: %d; r=14: %d; r=16: %d. \n",flag2_6,flag2_8,flag2_10,flag2_12,flag2_14,flag2_16);
+     printf("\n |Ffn3(r)| r=8: %d; r=10:%d; r=12:%d; r=14: %d. \n",flag3_8,flag3_10,flag3_12,flag3_14);
+     printf("\n |Ffn4(r)| r=2: %d; r=4: %d; r=6: %d; r=8:  %d; r=10: %d; r=12: %d; r=14: %d; r=16: %d. \n",flag4_2,flag4_4,flag4_6,flag4_8,flag4_10,flag4_12,flag4_14,flag4_16);
+     printf("\n |Ffn5(r)| r=4: %d; r=6: %d; r=8: %d; r=10: %d; r=12: %d; r=14: %d. \n",flag5_4,flag5_6,flag5_8,flag5_10,flag5_12,flag5_14);
+     printf("\n |Ffn6(r)| r=6: %d; r=8: %d; r=10:%d; r=12: %d; r=14: %d. \n",flag6_6,flag6_8,flag6_10,flag6_12,flag6_14);
+     printf("\n |Ffn7(r)| r=1: %d; r=3: %d; r=5: %d; r=7:  %d; r=9:  %d; r=11: %d; r=13: %d; r=15: %d; r=17: %d. \n",flag7_1,flag7_3,flag7_5,flag7_7,flag7_9,flag7_11,flag7_13,flag7_15,flag7_17);
+     printf("\n |Ffn8(r)| r=3: %d; r=5: %d; r=7: %d; r=9:  %d; r=11: %d; r=13: %d; r=15: %d. \n",flag8_3,flag8_5,flag8_7,flag8_9,flag8_11,flag8_13,flag8_15);
+     printf("\n |Ffn9(r)| r=5: %d; r=7: %d; r=9: %d; r=11: %d; r=13: %d; r=15: %d. \n",flag9_5,flag9_7,flag9_9,flag9_11,flag9_13,flag9_15);
+     printf("\n |Ffn10(r)|r=7: %d; r=9: %d; r=11:%d; r=13: %d; r=15: %d. \n",flag10_7,flag10_9,flag10_11,flag10_13,flag10_15);
     printf("\n The program has ended. \n");
     system("pause");
     return 0;
