@@ -19,16 +19,16 @@ void read_boolean_fun( string line, BooleanFun *f)
     stringstream stringin(line);
     for (int i = 0; i < (1<<6); i ++) {
       int y = 0, x = i;
-    for (int j = 0; j < 6; j ++) {
+      for (int j = 0; j < 6; j ++) {
       y = y*2 + x % 2;
       x = x / 2;
-    }
+      }
 
-    int v;
-    stringin >> v;
-    f->set_truth_table(y, v);
+      int v;
+      stringin >> v;
+      f->set_truth_table(y, v);
     }
-  f->set_truth_table_done();
+    f->set_truth_table_done();
 }
 //s1,s2 are as a 01 string of length 2^n
 string string_xor(string s1, string s2) {
@@ -56,14 +56,12 @@ set<string>  fn9_15;
 set<string>  fn2_8;
 set<string>  fn9_13_15;
 
-int num=0;
 fin.open( "f2_6.txt", ios::in);  
- if(fin.fail())
-  {
-    cout<<"no file!"<<endl;
-    getchar();
-    exit(0);
-  }
+if(fin.fail()){
+  cout<<"no file!"<<endl;
+  getchar();
+  exit(0);
+}
 while(!fin.eof())
 {   
   string anf2_6;
@@ -75,20 +73,16 @@ while(!fin.eof())
   anf2_6=f1-> get_coe_list();
   //store coefficient ANF of F_fn10(7)
   fn2_6.insert(anf2_6); 
-  //num++; 
   //cout<<f1->get_anf()<<endl;
 }
 fin.close();
-//cout<<num<<endl;
 
-num=0;
 fin1.open( "f9_15.txt", ios::in);  
-if(fin1.fail())
-  {
-    cout<<"no file!"<<endl;
-    getchar();
-    exit(0);
-  }
+if(fin1.fail()){
+  cout<<"no file!"<<endl;
+  getchar();
+  exit(0);
+}
 while(!fin1.eof())
 { 
   string anf_f9_15;
@@ -101,19 +95,16 @@ while(!fin1.eof())
   //store coefficient ANF of F_fn3(14)
    fn9_15.insert(anf_f9_15);   
   //  cout<<f2->get_anf()<<endl;
-  // num++; 
 } 
 fin1.close();
-//cout<<num<<endl;
-
-int num1=0;
+    
 fin2.open( "f2_8.txt", ios::in);  
 if(fin1.fail())
-  {
-    cout<<"no file!"<<endl;
-    getchar();
-    exit(0);
-  }
+{
+  cout<<"no file!"<<endl;
+  getchar();
+  exit(0);
+}
 while(!fin2.eof())
 { 
   string anf_fn2_8;
@@ -124,14 +115,11 @@ while(!fin2.eof())
   read_boolean_fun(line3,f3);
   anf_fn2_8=f3->get_coe_list();
   //store coefficient ANF of F_fn3(12)\cap F_fn3(14) 
-   fn2_8.insert(anf_fn2_8); 
- //  num1++;   
- //  cout<<f3->get_anf()<<endl;
+   fn2_8.insert(anf_fn2_8);  
+  //  cout<<f3->get_anf()<<endl;
 } 
 fin2.close();
-cout<<"num1 is "<<num1<<endl;
 
- num1=0;
 fin2.open( "fn9_13_15.txt", ios::in);  
 if(fin1.fail())
   {
@@ -149,12 +137,10 @@ while(!fin2.eof())
   read_boolean_fun(line2,f4);
   anf_fn9_13_15=f4->get_coe_list();
   //store coefficient ANF of F_fn10(9) 
-   fn9_13_15.insert(anf_fn9_13_15); 
- //  num1++;   
+   fn9_13_15.insert(anf_fn9_13_15);   
  //  cout<<f4->get_anf()<<endl;
 } 
 fin2.close();
-//cout<<"num1 is "<<num1<<endl;
 //int count=0;
 
 int flag=0;
@@ -163,27 +149,24 @@ set<string> G3;
 
 for (set<string>::iterator g=fn9_15.begin();g!=fn9_15.end();g++) 
 {
-     int all_in=true;
-     for(set<string>::iterator t=fn2_8.begin();t!=fn2_8.end();t++)
-     {
-        string result;
-       //let h=g+t
-        result=string_xor(*t,*g);  
-        //h\in fn3_14?
-        if(fn9_13_15.find(result)==fn9_13_15.end())
-            {
-              all_in = false;
-              break;
-            }       
-    } 
-    if(all_in)
-    {
-      flag++;
-      G3.insert(*g);
-    }    
+   int all_in=true;
+   for(set<string>::iterator t=fn2_8.begin();t!=fn2_8.end();t++){
+     string result;
+     //let h=g+t
+     result=string_xor(*t,*g);  
+     //h\in fn3_14?
+     if(fn9_13_15.find(result)==fn9_13_15.end()){
+       all_in = false;
+       break;
+     }       
+   } 
+   if(all_in){
+     flag++;
+     G3.insert(*g);
+   }    
 }
-if(flag==0)
-    {cout<<"Cannot achieve 21. "<<" Find "<<flag<<" possible g."<<endl;}
-
-  return 0;
+if(flag==0){
+  cout<<"Cannot achieve 21. "<<" Find "<<flag<<" possible g."<<endl;
+}
+return 0;
 }
