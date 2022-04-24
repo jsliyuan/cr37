@@ -132,112 +132,88 @@ void cal_quard1();
 void assign();
 int main()
 { 
-    cal_quard1();
-    cal_quard2();
-    assign();
-   int m,n,t,arry[64],t1,i,j;
-   FILE *w1;
-   int flag1=0,flag2=0,flag3=0,flag4=0,flag5=0,flag6=0;
+  cal_quard1();
+  cal_quard2();
+  assign();
+  int m,n,t,arry[64],t1,i,j;
+  FILE *w1;
+  int flag1=0,flag2=0,flag3=0,flag4=0,flag5=0,flag6=0;
 
-     for(m=0;m<1048576;m++)
-    {
-           for(n=0;n<64;n++)
-            {  
-                 if(quard1[m][n]==fn[n])
-                {
-                    arry[n]=0;
-                }
-                else
-                {
-                    arry[n]=1;
-                }
-            }
-           t1=nlf2(arry);
-           
-           if(t1==5)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_5[flag1][n]=quard1[m][n];
-            }
-             flag1+=1;
-          }
-           if(t1==7)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_7[flag2][n]=quard1[m][n];
-            }
-             flag2+=1;
-          }
-           if(t1==9)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_9[flag3][n]=quard1[m][n];
-            }
-             flag3+=1;
-          }
-          if(t1==11)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_11[flag4][n]=quard1[m][n];
-            }
-             flag4+=1;
-          }
-          if(t1==13)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_13[flag5][n]=quard1[m][n];
-            }
-             flag5+=1;
-          }
-          if(t1==15)
-          {
-              for(n=0;n<64;n++)
-            {
-                select_f9_15[flag6][n]=quard1[m][n];
-            }
-             flag6+=1;
-          }
-    } 
+  for(m=0;m<1048576;m++){
+    for(n=0;n<64;n++){  
+      if(quard1[m][n]==fn[n])
+        arry[n]=0;
+      else
+        arry[n]=1;
+    }
+  t1=nlf2(arry);
+  if(t1==5){
+    for(n=0;n<64;n++){
+      select_f9_5[flag1][n]=quard1[m][n];
+    }
+    lag1+=1;
+  }
+  if(t1==7){
+    for(n=0;n<64;n++){
+      select_f9_7[flag2][n]=quard1[m][n];
+    }
+    flag2+=1;
+  }
+  if(t1==9){
+    for(n=0;n<64;n++){
+      select_f9_9[flag3][n]=quard1[m][n];
+    }
+    flag3+=1;
+  }
+  if(t1==11){
+     for(n=0;n<64;n++){
+       select_f9_11[flag4][n]=quard1[m][n];
+     }
+     flag4+=1;
+  }
+   if(t1==13){
+      for(n=0;n<64;n++){
+        select_f9_13[flag5][n]=quard1[m][n];
+      }
+      flag5+=1;
+   }
+   if(t1==15){
+      for(n=0;n<64;n++){
+        select_f9_15[flag6][n]=quard1[m][n];
+      }
+      flag6+=1;
+   }
+ } 
   
-    w1=fopen("fn9_13_15.txt","w+");
+ w1=fopen("fn9_13_15.txt","w+"); 
+ for(i=0;i<flag5;i++){
+   for(j=0;j<64;j++){
+     fprintf(w1,"%d",select_f9_13[i][j]);
+     if(j!=63)
+       fprintf(w1," ");
+   }
+   fprintf(w1,"\n");
+ }
+  fclose(w1);
+  w1=fopen("fn9_13_15.txt","a");
         
-        for(i=0;i<flag5;i++)
-        {
-            for(j=0;j<64;j++)
-            {
-                fprintf(w1,"%d",select_f9_13[i][j]);
-                if(j!=63)
-                    fprintf(w1," ");
-            }
-            fprintf(w1,"\n");
-        }
-    fclose(w1);
-    w1=fopen("fn9_13_15.txt","a");
-        
-        for(i=0;i<flag6;i++)
-        {
-            for(j=0;j<64;j++)
-            {
-                fprintf(w1,"%d",select_f9_15[i][j]);
-                if(j!=63)
-                    fprintf(w1," ");
-            }
-            fprintf(w1,"\n");
-        }
-    fclose(w1);
+  for(i=0;i<flag6;i++){
+    for(j=0;j<64;j++){
+      fprintf(w1,"%d",select_f9_15[i][j]);
+      if(j!=63)
+        fprintf(w1," ");
+    }
+      fprintf(w1,"\n");
+  }
+  fclose(w1);
  
-    printf("the number of r=5 is %d\n",flag1);
-    printf("the number of r=7 is %d\n",flag2);
-    printf("the number of r=9 is %d\n",flag3);
-    printf("the number of r=11 is %d\n",flag4);
-    printf("the number of r=13 is %d\n",flag5);
-    printf("the number of r=15 is %d\n",flag6);
-    printf("The program has ended.\n");
-    system("pause");
-    return 0;
+  printf("the number of r=5 is %d\n",flag1);
+  printf("the number of r=7 is %d\n",flag2);
+  printf("the number of r=9 is %d\n",flag3);
+  printf("the number of r=11 is %d\n",flag4);
+  printf("the number of r=13 is %d\n",flag5);
+  printf("the number of r=15 is %d\n",flag6);
+  printf("The program has ended.\n");
+  system("pause");
+  return 0;
 }
