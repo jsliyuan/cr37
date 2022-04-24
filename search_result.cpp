@@ -11,7 +11,7 @@
 using namespace std;
 
 //Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21. deg(g)=3
-//that is, fn10||fn6(A^-1x+b)+g(A^-1x+b) with nl3=21.
+//that is, fn10||fn6(A^-1x+ A^-1b)+g(A^-1x+b) with nl3=21.
 //We have verified that the number of (Ai,bi) such that (Ai,bi)f= fn10(Ax+b) mod RM(3,6) is 65112;
 //The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
 
@@ -190,12 +190,12 @@ while(!fin1.eof())
         }
     }
      //flag represents the number of possible g corresponding to each A,b
-      cout<< flag1++<<" "<< flag<<endl;
-      cout<< line_anf<<" "<<*magic32_trans.begin()<<endl;
+      cout<< "i: "<<flag1++<<" "<< flag<<"possible g"<<endl;
+   //   cout<< line_anf<<" "<<*magic32_trans.begin()<<endl;
       //print valid A,b
       if(all_in_A)
       {
-        cout<<"A: "<<line_anf<<endl;
+        cout<<"possible (A,b): "<<line_anf<<endl;
         cout<<"possible g: "<<endl;
       }
       // print all the possbile g
@@ -211,6 +211,7 @@ while(!fin1.eof())
 }
 //print the number of possbile g ;
 // if there doesn't exist possbile g, then sign==0.
-cout<<"find "<<sign<<endl;
+   if(sign==0)
+cout<<"There doesn't exist possbile (A,b) and g such that nl_3(fn10||fn6(A^-1+A^-1b)+g(A^-1x))=21. "<<endl;
   return 0;
 }
