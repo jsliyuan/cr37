@@ -33,6 +33,7 @@ The file is ~120MB, and it takes about two hours to finish.
 You can use it to generate "Ffn2.txt","Ffn3.txt","Ffn9.txt","Ffn10.txt",
 
 -g++ -o ffn.out ffn_distribution.cpp boolean_fun.cpp homogenous_bf_generator.cpp affine_trans.cpp
+
 -./ffn.out
 
 ### about .txt
