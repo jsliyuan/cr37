@@ -1,8 +1,3 @@
-//Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21. deg(g)=3
-//that is, fn10||fn6(A^-1x+b)+g(A^-1x+b) with nl3=21.
-//We have verified that the number of orbits of fn10(Ax+b) mod RM(3,6) is 65112;
-//The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
-
 #include "boolean_fun.h"
 #include "affine_trans.h"
 
@@ -12,6 +7,11 @@
 #include <fstream>
 
 using namespace std;
+// determine the nl3 of fn10||fn3+g3 whether can achieve 21
+// which must satisfy F_fn10(r) \subset F_fn3(21-r)+g3,
+// that is, F_fn10(r)+g3 \subset F_fn3(21-r).
+// g3 is a homogeneous 6-variable Boolean function of degree 3, where g3 \in F_fn3(12) and F_fn3(14).
+
 
 // Read Boolean function ANF from file, and save the string to fn_set.
 // File format:
@@ -56,16 +56,16 @@ int main() {
 
   int total_t = 0;
   int num=0;
+  
+  // Enumerate g
   for (const string& anf : Ff3_12_14) {
     BooleanFun fn(6, anf);
-    //BooleanFun g(6, *Ff10_7.begin());
-    //g.add(fn);
     bool all_in = true;
-    // Enumerate g
+    // Enumerate f in F_fn10(7)
     for (const string& t_anf : Ff10_7) {
-      //BooleanFun sum = g;
       BooleanFun t(6,t_anf);
       t.add(fn);
+      //whether f+g belongs to F_fn3(14)
       if (Ff3_14.find(t.get_anf()) == Ff3_14.end()) {
         all_in = false;
         break;
@@ -86,13 +86,16 @@ int main() {
 
   total_t=0;
   num=0;
+  
+  //Enumerate g
   for (const string& anf1 : g3) {
     BooleanFun fn1(6, anf1);
     bool all_in_1 = true;
-    // Enumerate g
+    // Enumerate f in F_fn10(9)
     for (const string& t_anf1 : Ff10_9) {
       BooleanFun t1(6,t_anf1);
       t1.add(fn1);
+      //whether f+g belongs to F_fn3(12) and F_fn3(14)
       if (Ff3_12_14.find(t1.get_anf()) == Ff3_12_14.end()) {
         all_in_1 = false;
         break;
