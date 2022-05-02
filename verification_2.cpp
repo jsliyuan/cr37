@@ -1,3 +1,8 @@
+//Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21. deg(g)=3
+//that is, fn10||fn6(A^-1x+b)+g(A^-1x+b) with nl3=21.
+//We have verified that the number of orbits of fn10(Ax+b) mod RM(3,6) is 65112;
+//The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
+
 #include "boolean_fun.h"
 #include "affine_trans.h"
 
@@ -69,6 +74,7 @@ int main() {
     if (all_in) {
       cout << "Bad news!" << endl;
       cout << fn.get_anf() << endl;
+      // store the possible homogeneous Boolean functions g of degree 3 is string set g3.
       g3.insert(fn.get_anf());
     }
     total_t ++;
