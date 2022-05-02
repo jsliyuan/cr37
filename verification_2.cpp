@@ -7,7 +7,7 @@
 #include <fstream>
 
 using namespace std;
-// determine the nl3 of fn10||fn3+g whether can achieve 21
+// Determine the nl3 of fn10||fn3+g whether can achieve 21,
 // which must satisfy F_fn10(r) \subset F_fn3(21-r)+g,
 // that is, F_fn10(r)+g \subset F_fn3(21-r).
 // g is a homogeneous 6-variable Boolean function of degree 3, where g \in F_fn3(12) and F_fn3(14).
@@ -65,7 +65,7 @@ int main() {
     for (const string& t_anf : Ff10_7) {
       BooleanFun t(6,t_anf);
       t.add(fn);
-      //whether f+g \in F_fn3(14)
+      //Whether f+g \in F_fn3(14)
       if (Ff3_14.find(t.get_anf()) == Ff3_14.end()) {
         all_in = false;
         break;
@@ -74,7 +74,7 @@ int main() {
     if (all_in) {
       cout << "Bad news!" << endl;
       cout << fn.get_anf() << endl;
-      // store the possible homogeneous Boolean functions g of degree 3 is string set g3.
+      // Store the possible homogeneous Boolean functions g of degree 3 is string set g3.
       g3.insert(fn.get_anf());
     }
     total_t ++;
@@ -95,7 +95,7 @@ int main() {
     for (const string& t_anf1 : Ff10_9) {
       BooleanFun t1(6,t_anf1);
       t1.add(fn1);
-      //whether f+g \in F_fn3(12) and F_fn3(14)
+      //Whether f+g \in F_fn3(12) and F_fn3(14)
       if (Ff3_12_14.find(t1.get_anf()) == Ff3_12_14.end()) {
         all_in_1 = false;
         break;
