@@ -65,7 +65,7 @@ int main() {
     for (const string& t_anf : Ff10_7) {
       BooleanFun t(6,t_anf);
       t.add(fn);
-      //whether f+g belongs to F_fn3(14)
+      //whether f+g \in F_fn3(14)
       if (Ff3_14.find(t.get_anf()) == Ff3_14.end()) {
         all_in = false;
         break;
@@ -95,7 +95,7 @@ int main() {
     for (const string& t_anf1 : Ff10_9) {
       BooleanFun t1(6,t_anf1);
       t1.add(fn1);
-      //whether f+g belongs to F_fn3(12) and F_fn3(14)
+      //whether f+g \in F_fn3(12) and F_fn3(14)
       if (Ff3_12_14.find(t1.get_anf()) == Ff3_12_14.end()) {
         all_in_1 = false;
         break;
