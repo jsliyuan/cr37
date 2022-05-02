@@ -94,7 +94,7 @@ Use BFS to find the full orbit of a given Boolean function under affine transfor
 5. Ffn10_7.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn10(7);
 6. Ffn10_9.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn10(9);
 7. Ffn10_15.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn10(15);
-8. f10_af.txt: storing the set of (Ai,bi) in the form of, e,g, "[100000 010000 001000 000100 000010 000001]000000", where A={A_1,...,A_l} for l= 888832, T=Aix+bi such that (Ai,bi)f=f(Aix+bi) enumerates the orbit the fn10.
+8. fn10_af.txt: storing the set of (Ai,bi) in the form of, e,g, "[100000 010000 001000 000100 000010 000001]000000", where A={A_1,...,A_l} for l= 888832, T=Aix+bi such that (Ai,bi)f=f(Aix+bi) enumerates the orbit the fn10.
 The size of (Ai,bi) is 65112.
 
 
