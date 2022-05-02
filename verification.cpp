@@ -7,6 +7,11 @@
 #include <fstream>
 
 using namespace std;
+//Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21. deg(g)=3
+//that is, fn10||fn6(A^-1x+ A^-1b)+g(A^-1x+b) with nl3=21.
+//We have verified that the number of (Ai,bi) such that (Ai,bi)f= fn10(Ax+b) mod RM(3,6) is 65112;
+//The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
+
 
 // Read Boolean function ANF from file, and save the string to fn_set.
 // File format:
@@ -84,9 +89,11 @@ int main() {
       BooleanFun g(6, t_anf);
       g.add(S.at(0));
       bool all_in = true;
+      //Enumerate f in F_fn6(Ax)(6)
       for (int i = 1; i < S.size(); i ++) {
         BooleanFun sum = g;
         sum.add(S.at(i));
+        //Whether f+g \in F_fn10(15)
         if (Ff10_15.find(sum.get_anf()) == Ff10_15.end()) {
           all_in = false;
           break;
