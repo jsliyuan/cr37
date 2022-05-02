@@ -53,12 +53,12 @@ int main() {
   int num=0;
   for (const string& anf : Ff3_12_14) {
     BooleanFun fn(6, anf);
-  //  BooleanFun g(6, *Ff10_7.begin());
-   //   g.add(fn);
-      bool all_in = true;
+    //BooleanFun g(6, *Ff10_7.begin());
+    //g.add(fn);
+    bool all_in = true;
     // Enumerate g
     for (const string& t_anf : Ff10_7) {
-   //   BooleanFun sum = g;
+      //BooleanFun sum = g;
       BooleanFun t(6,t_anf);
       t.add(fn);
       if (Ff3_14.find(t.get_anf()) == Ff3_14.end()) {
