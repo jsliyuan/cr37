@@ -15,7 +15,7 @@ using namespace std;
 // ANF (string)
 // r (int)
 // ...
-// 2^22 ANFs in total
+// 2^20 ANFs in total
 void read_bfs_from_file(string file_name, int r, set<string> *fn_set) {
   ifstream myfile;
   myfile.open(file_name);
