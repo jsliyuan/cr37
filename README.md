@@ -4,25 +4,25 @@ This is a computer-assisted proof that CR(3, 7) = 20, where CR(r, n) denotes the
 
 There are 11 affine equivalent classes in RM(7,7) mod RM(3, 7), listed below (except 0):
 
-f1 = x1x2x3x4
+fn1 = x1x2x3x4
 
-f2 = x1x2x4x5+x1x2x3x6
+fn2 = x1x2x4x5+x1x2x3x6
 
-f3 = x2x3x4x5+x1x3x4x6+x1x2x5x6
+fn3 = x2x3x4x5+x1x3x4x6+x1x2x5x6
 
-f4 = x1x2x3x4x5
+fn4 = x1x2x3x4x5
 
-f5 = x1x2x3x4x5+x1x2x3x6
+fn5 = x1x2x3x4x5+x1x2x3x6
 
-f6 = x1x2x3x4x5+x1x3x4x6+x1x2x5x6
+fn6 = x1x2x3x4x5+x1x3x4x6+x1x2x5x6
 
-f7 = x1x2x3x4x5x6
+fn7 = x1x2x3x4x5x6
 
-f8 = x1x2x3x4x5x6+x1x2x3x4
+fn8 = x1x2x3x4x5x6+x1x2x3x4
 
-f9 = x1x2x3x4x5x6+x1x2x4x5+x1x2x3x6
+fn9 = x1x2x3x4x5x6+x1x2x4x5+x1x2x3x6
 
-f10 = x1x2x3x4x5x6+x2x3x4x5+x1x3x4x6+x1x2x5x6
+fn10 = x1x2x3x4x5x6+x2x3x4x5+x1x3x4x6+x1x2x5x6
 
 Philippe Langevin has a nice website containing all classification results for all n <= 6
 
