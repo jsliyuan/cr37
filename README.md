@@ -33,9 +33,9 @@ The file is ~120MB, and it takes about two hours to finish.
 You can use it to generate "Ffn2.txt","Ffn3.txt","Ffn9.txt","Ffn10.txt",
 
 -g++ -o ffn.out ffn_distribution.cpp boolean_fun.cpp homogenous_bf_generator.cpp affine_trans.cpp
-
 - ./ffn.out
 
+### about .txt
 
 1. Ffn2_8.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn2(8);
 2. Ffn3_14.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn3(14);
