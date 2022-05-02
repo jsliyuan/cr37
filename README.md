@@ -1,9 +1,9 @@
-#CR(3,7)
+# CR(3,7)
 
 This is a computer-assisted proof that CR(3, 7) = 20, where CR(r, n) denotes the covering radius of Reed-Muller codes RM(r, n).
 
 ## How to test
------------------
+
 ### verification.cpp 
 It is used to verify that the nl3 of fn10||fn6(A^{-1}x+A^-1b)+g(A^-1x) cannot achieve 21.
 
