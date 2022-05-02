@@ -36,6 +36,15 @@ You can use it to generate "Ffn2.txt","Ffn3.txt","Ffn9.txt","Ffn10.txt",
 
 -./ffn.out
 
+### bfs_orbit.cpp
+
+Use BFS to find the full orbit of a given Boolean function under affine transformation.
+
+- g++ -o bfs.out bfs_orbit.cpp boolean_fun.cpp affine_trans.cpp
+
+- ./bfs.out
+
+
 ### about .txt
 
 1. Ffn2_8.txt: storing the ANF of all homogeneous Boolean functions of degree 3 in F_fn2(8);
