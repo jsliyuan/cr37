@@ -54,12 +54,16 @@ It is used to verify that the nl3 of fn10||fn6(A^{-1}x+A^{-1}b)+g(A^{-1}x) canno
 ### verification_1.cpp 
 It is used to determine the third-order nonlinearity of fn2||fn9+g3 cannot achieve 21.
 
+At first, you should use ffn_distribution.cpp to generate Ffn2.txt and Ffn9.txt.
+
 -g++ -o verification1.out verification_1.cpp boolean_fun.cpp affine_trans.cpp
 
 -./verification1.out
 
 ### verification_2.cpp 
 It is used to determine the third-order nonlinearity of fn10||fn3+g3 cannot achieve 21.
+
+At first, you should use ffn_distribution.cpp to generate Ffn3.txt and Ffn10.txt.
 
 -g++ -o verification2.out verification_2.cpp boolean_fun.cpp affine_trans.cpp
 
@@ -68,7 +72,7 @@ It is used to determine the third-order nonlinearity of fn10||fn3+g3 cannot achi
 ### ffn_distribution.cpp 
 Compute F_f(r) = {homo g : nl_2(f+g) = r}, and wrtie the results into a file.
 
-The file is ~120MB, and it takes about two hours to finish.
+The file is ~76.5MB, and it takes about two hours to finish.
 
 You can use it to generate "Ffn2.txt","Ffn3.txt","Ffn9.txt","Ffn10.txt", which is used in verification_1.cpp and verification_2.cpp.
 
