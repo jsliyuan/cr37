@@ -1,3 +1,10 @@
+/* 
+Determine the nl3 of fn10||fn3+g whether can achieve 21,
+which must satisfy F_fn10(r) \subset F_fn3(21-r)+g,
+that is, F_fn10(r)+g \subset F_fn3(21-r).
+g is a homogeneous 6-variable Boolean function of degree 3, where g \in F_fn3(12) and F_fn3(14).
+*/
+
 #include "boolean_fun.h"
 #include "affine_trans.h"
 
@@ -7,11 +14,6 @@
 #include <fstream>
 
 using namespace std;
-// Determine the nl3 of fn10||fn3+g whether can achieve 21,
-// which must satisfy F_fn10(r) \subset F_fn3(21-r)+g,
-// that is, F_fn10(r)+g \subset F_fn3(21-r).
-// g is a homogeneous 6-variable Boolean function of degree 3, where g \in F_fn3(12) and F_fn3(14).
-
 
 // Read Boolean function ANF from file, and save the string to fn_set.
 // File format:
