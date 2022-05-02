@@ -7,7 +7,7 @@
 #include <fstream>
 
 using namespace std;
-// determine the nl3 of fn2||fn9+g whether can achieve 21
+// Determine the nl3 of fn2||fn9+g whether can achieve 21,
 // which must satisfy F_fn2(r) \subset F_fn9(21-r)+g,
 // that is, F_fn2(r)+g \subset F_fn9(21-r).
 // g is a homogeneous 6-variable Boolean function of degree 3, where g \in F_fn9(15).
@@ -61,7 +61,7 @@ int main() {
     for (const string& t_anf : Ff2_8) {
       BooleanFun t(6,t_anf);
       t.add(fn);
-      // whether f+g \in F_fn9(13) and F_fn9(15)
+      // Whether f+g \in F_fn9(13) and F_fn9(15)
       if (Ff9_13_15.find(t.get_anf()) == Ff9_13_15.end()) {
         all_in = false;
         break;
