@@ -1,3 +1,10 @@
+/*
+Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21, where g is a homogeneous 6-variable Boolean function of degree 3, 
+that is, fn10||fn6(A^-1x+ A^-1b)+g(A^-1x+b) with nl3=21.
+We have verified that the number of (Ai,bi) such that (Ai,bi)f= fn10(Ax+b) mod RM(3,6) is 65112;
+The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
+*/
+
 #include "boolean_fun.h"
 #include "affine_trans.h"
 
@@ -7,11 +14,6 @@
 #include <fstream>
 
 using namespace std;
-//Our goal is to find A,b and g such that fn10(Ax+b)+g||fn6 with nl3=21. deg(g)=3
-//that is, fn10||fn6(A^-1x+ A^-1b)+g(A^-1x+b) with nl3=21.
-//We have verified that the number of (Ai,bi) such that (Ai,bi)f= fn10(Ax+b) mod RM(3,6) is 65112;
-//The length of orbits of fn10(Ax+b) mod RM(3,6) is 888832.
-
 
 // Read Boolean function ANF from file, and save the string to fn_set.
 // File format:
