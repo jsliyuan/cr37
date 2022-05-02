@@ -8,17 +8,21 @@ This is a computer-assisted proof that CR(3, 7) = 20, where CR(r, n) denotes the
 It is used to verify that the nl3 of fn10||fn6(A^{-1}x+A^-1b)+g(A^-1x) cannot achieve 21.
 
 -g++ -o verification.out verification.cpp boolean_fun.cpp affine_trans.cpp
+
 -./verification.out
 
 ### verification_1.cpp 
 It is used to determine the third-order nonlinearity of fn2||fn9+g3 cannot achieve 21.
 
 -g++ -o verification1.out verification_1.cpp boolean_fun.cpp affine_trans.cpp
+
 -./verification1.out
 
 ### verification_2.cpp 
 It is used to determine the third-order nonlinearity of fn10||fn3+g3 cannot achieve 21.
+
 -g++ -o verification2.out verification_2.cpp boolean_fun.cpp affine_trans.cpp
+
 -./verification2.out
 
 ### ffn_distribution.cpp 
@@ -29,6 +33,7 @@ The file is ~120MB, and it takes about two hours to finish.
 You can use it to generate "Ffn2.txt","Ffn3.txt","Ffn9.txt","Ffn10.txt",
 
 -g++ -o ffn.out ffn_distribution.cpp boolean_fun.cpp homogenous_bf_generator.cpp affine_trans.cpp
+
 - ./ffn.out
 
 
