@@ -28,10 +28,24 @@ Philippe Langevin has a nice website containing all classification results for a
 
 http://langevin.univ-tln.fr/project/agl/agl.html
 
+## What do we prove?
+
+### fn2||fn9+g3 
+
+verification_1.cpp proves that fn2||fn9+g3, for any degree-3 homogenous Boolean function g3, cannot have nl3 = 21.
+
+### fn10||fn3+g3
+
+verification_2.cpp proves that fn10||fn3+g3, for any degree-3 homogenous Boolean function g3, cannot have nl3 = 21.
+
+### fn10||fn6(A^{-1}x+A^{-1}b)+g(A^{-1}x)
+
+verification.cpp proves that fn10||fn6(A^{-1}x+A^{-1}b)+g(A^{-1}x), for any degree-3 homogenous Boolean function g, cannot have nl3 = 21.
+
 ## How to test
 
 ### verification.cpp 
-It is used to verify that the nl3 of fn10||fn6(A^{-1}x+A^-1b)+g(A^-1x) cannot achieve 21.
+It is used to verify that the nl3 of fn10||fn6(A^{-1}x+A^{-1}b)+g(A^{-1}x) cannot achieve 21.
 
 -g++ -o verification.out verification.cpp boolean_fun.cpp affine_trans.cpp
 
