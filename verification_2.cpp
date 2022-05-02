@@ -42,10 +42,10 @@ int main() {
   read_bfs_from_file("Ffn3.txt", 14,0, &Ff3_14);
 
   set<string> Ff10_9;
-  read_bfs_from_file("Ff10.txt", 9,0, &Ff10_9);
+  read_bfs_from_file("Ffn10.txt", 9,0, &Ff10_9);
 
   set<string> Ff10_7;
-  read_bfs_from_file("Ff10.txt", 7,0, &Ff10_7);
+  read_bfs_from_file("Ffn10.txt", 7,0, &Ff10_7);
 
   set<string> g3;
 
