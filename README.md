@@ -88,7 +88,7 @@ Use BFS to find the full orbit of a given Boolean function under affine transfor
 
 -./bfs.out
 
-###test_nonlinearity.cpp
+### test_nonlinearity.cpp
 The maximum nonlinearity, second-order nonlinearity, third-order nonlinearity of fn1-fn10 are given in this file.
 
 -g++ -o test.out test_nonlinearity.cpp boolean_fun.cpp affine_trans.cpp
