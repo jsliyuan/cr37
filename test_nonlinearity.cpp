@@ -1,11 +1,7 @@
 #include <iostream>
 #include <time.h>
-#include <set>
 #include <assert.h>
-#include <vector>
 #include <utility>
-#include <fstream>
-#include <unordered_set>
 
 #include "boolean_fun.h"
 #include "affine_trans.h"
