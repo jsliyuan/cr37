@@ -266,20 +266,18 @@ void BooleanFun::set_anf_coe_done() {
 // dest[x] = XOR_{y <= x bitwise} source[y]
 void BooleanFun::mobius_inversion(int* dest, int* source) {
   // Initialize
-  for (int i = 0; i < (1<<n); i ++) {
-    dest[i] = 0;
-  }
+   memcpy(tmp, source, (1<<n)*sizeof(int));
 
-  for (int j = 0; j < (1<<n); j ++) {
-    if (source[j] == 0)
-      continue;
-
-    for (int i = 0; i < (1<<n); i ++) {
-      // if j <= i bitwise, i.e., j | i = i
-      if ((j | i) == i) {
-        dest[i] = (dest[i] + source[j]) % 2;
+  for (int i = 0; i < n; i ++) {
+    int mi = (1<<i);
+    for (int k = 0; k < (1<<n); k ++) {
+      if ((k & mi) != 0) {
+        dest[k] = tmp[k^mi] ^ tmp[k];
+      } else {
+        dest[k] = tmp[k];
       }
     }
+    memcpy(tmp, dest, (1<<n)*sizeof(int));
   }
 }
 
