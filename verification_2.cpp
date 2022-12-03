@@ -23,17 +23,19 @@ using namespace std;
 // r (int)
 // ...
 // 2^20 ANFs in total
-void read_bfs_from_file(string file_name, int r, int r1, set<string> *fn_set) {
+void read_bfs_from_file(string file_name, int r, set<string> *fn_set) {
   ifstream myfile;
   myfile.open(file_name);
   string anf;
   int val;
-  for (int i = 0; i < (1<<20); i ++) {
-    myfile >> anf;
-    myfile >> val;
-    if (val == r||val==r1) {
-      fn_set->insert(anf);
-    //  cout<<anf<<endl;
+  for (int i = 0; i < (1<<20); i ++)  {
+     if (!myfile.eof()) {
+      myfile >> anf;
+      myfile >> val;
+      if (val == r) {
+        fn_set->insert(anf);
+        //cout<<anf<<endl;
+      }
     }
   }
 
@@ -43,16 +45,21 @@ void read_bfs_from_file(string file_name, int r, int r1, set<string> *fn_set) {
 
 int main() {
   set<string> Ff3_12_14;
-  read_bfs_from_file("Ffn3.txt", 12,14, &Ff3_12_14);
+  /*Firstly, you should use ffn_distribution.cpp to generate the Ffn3.txt, which stores 
+    all homogeneous 6-variable Boolean functions of F_fn3(k) for 8<=k<=14 (in the form of ANF);
+    Since the size of the file exceeds 200M, so that we cannot upload it to GitHub;
+  */
+  read_bfs_from_file("Ffn3.txt", 12, &Ff3_12_14);
+  read_bfs_from_file("Ffn3.txt", 14, &Ff3_12_14);
 
   set<string> Ff3_14;
-  read_bfs_from_file("Ffn3.txt", 14,0, &Ff3_14);
+  read_bfs_from_file("Ffn3_14.txt", 14, &Ff3_14);
 
   set<string> Ff10_9;
-  read_bfs_from_file("Ffn10.txt", 9,0, &Ff10_9);
+  read_bfs_from_file("Ffn10_9.txt", 9, &Ff10_9);
 
   set<string> Ff10_7;
-  read_bfs_from_file("Ffn10.txt", 7,0, &Ff10_7);
+  read_bfs_from_file("Ffn10_7.txt", 7, &Ff10_7);
 
   set<string> g3;
 

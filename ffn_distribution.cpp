@@ -1,10 +1,10 @@
 /*
-Compute F_f(r) = {g is homogenous degree-r or 0 : nl_2(f+g) = r}
+Compute F_f(r) = {g is homogenous degree-3 or 0 : nl_2(f+g) = r}
 
 Write the results to file with format:
-g1 in its ANF
+g1 in its ANF (or truth table in hexadecimal)
 nl_2(f+g1)
-g2 in its ANF
+g2 in its ANF (or truth table in hexadecimal)
 nl_2(f+g2)
 ...
 ...
@@ -33,7 +33,17 @@ void count(string anf, ofstream& myfile) {
     h63=*gen63.get_boolean_fun();
     int nl = fn61.nonlinearity(2);
     dist[nl] ++;
+  
+    /* If you want the ANF of Boolean functions, please use the following command: */
     myfile << h63.get_anf() << endl;
+
+    /* If you want the truth table in hexadecimal of Boolean functions, 
+       please use the following command instead of the previous command (You can only choose one of the two commands):
+       
+       myfile << h63.get_get_truth_table_hex() << endl;
+    
+    */
+
     myfile << nl << endl;
     if (total % 100 == 0) {
       cout << total << endl;
@@ -72,10 +82,10 @@ int main() {
   int n;
   ofstream myfile;
   //remember to change the name of .txt for different fni
-  myfile.open("Ffn2.txt");
-  //count("x1x2x4x5+x1x2x3x6");
+  myfile.open("Ffn9.txt");
+
   string anf;
-  //string anf1,anf2,anf3;
+  //string anf1,anf2,anf3,anf4;
   cout << "Please provide the ANF:";
   cin >> anf;
   cout << "ANF is [" << anf << "]" << endl;
@@ -84,13 +94,17 @@ int main() {
   cin >> anf1;
   cout << "ANF of fn3 is [" << anf1 << "]" << endl;
 
-  cout << "Please provide the ANF of fn9:";
+  cout << "Please provide the ANF of fn6:";
   cin >> anf2;
-  cout << "ANF of fn9 is [" << anf2 << "]" << endl;
+  cout << "ANF of fn6 is [" << anf2 << "]" << endl;
+
+  cout << "Please provide the ANF of fn9:";
+  cin >> anf3;
+  cout << "ANF of fn9 is [" << anf3 << "]" << endl;
 
   cout << "Please provide the ANF of fn10:";
-  cin >> anf3;
-  cout << "ANF of fn10 is [" << anf3 << "]" << endl;
+  cin >> anf4;
+  cout << "ANF of fn10 is [" << anf4 << "]" << endl;
   */
 
   count(anf, myfile);
@@ -100,12 +114,16 @@ int main() {
   count(anf1, myfile);
   myfile.close();
 
-  myfile.open("Ffn9.txt");
+  myfile.open("Ffn6.txt");
   count(anf2, myfile);
   myfile.close();
 
-  myfile.open("Ffn10.txt");
+  myfile.open("Ffn9.txt");
   count(anf3, myfile);
+  myfile.close();
+
+  myfile.open("Ffn10.txt");
+  count(anf4, myfile);
   myfile.close();
   */
 
