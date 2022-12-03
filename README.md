@@ -54,16 +54,12 @@ It is used to verify that the third-order nonlinearity of fn10||fn6(A^{-1}x+A^{-
 ### verification_1.cpp 
 It is used to determine the third-order nonlinearity of fn2||fn9+g3 cannot achieve 21.
 
-At first, you should use ffn_distribution.cpp to generate Ffn2.txt and Ffn9.txt.
-
 -g++ -o verification1.out verification_1.cpp boolean_fun.cpp affine_trans.cpp
 
 -./verification1.out
 
 ### verification_2.cpp 
 It is used to determine the third-order nonlinearity of fn10||fn3+g3 cannot achieve 21.
-
-At first, you should use ffn_distribution.cpp to generate Ffn3.txt and Ffn10.txt.
 
 -g++ -o verification2.out verification_2.cpp boolean_fun.cpp affine_trans.cpp
 
