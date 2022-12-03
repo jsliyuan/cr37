@@ -20,7 +20,7 @@ class BooleanFun {
       if (this->n < g.var_num()) {
         return true;
       }
-      return this->get_anf() < g.get_anf();
+      return this->get_truth_table_hex() < g.get_truth_table_hex();
     }
 
     // Reload = opeartor
@@ -28,7 +28,7 @@ class BooleanFun {
       if (this->n != g.var_num()) {
         return false;
       }
-      return this->get_anf() == g.get_anf();
+      return this->get_truth_table_hex() == g.get_truth_table_hex();
     }
 
     // Assignment operator
@@ -101,6 +101,14 @@ class BooleanFun {
     // The terms are ordered by the lexicographical order (d(x)).
     std::string get_anf() const;
 
+     //Convert hexadecimal string to binary string, and 
+    // set the truth_table[x] to v, where
+    // x is in [0, 2^n-1], and v is 0 or 1.
+    // Returns false if x or v is out of range.
+    bool set_truth_table_hex(std::string str);
+
+    std::string get_truth_table_hex() const;
+
     // Returns anf[2^n] as a 01 string of length 2^n.
     // The order preserves.
     std::string get_coe_list() const;
@@ -158,16 +166,13 @@ class BooleanFun {
     // Returns the rth-order nonlinearity, where r >= 1.
     int nonlinearity(int r) const;
 
-    // BE CAREFUL!
-    // truth table of this Boolean function, of length 2^n
-    // value of f(x_1, x_2, ..., x_n) is truth_table[d(x)],
-    // where d(x) := x_1*2^{n-1}+x_2*2^{n-2}+...+x_n.
-    int* truth_table;
+    // Returns the truth table, which is an array of length 2^n.
+    // Read-only.
+    const int* get_truth_table_ptr();
 
-    // BE CAREFUL!
-    // algebraic normal form
-    // ANF[d(e)] is the coefficient of x1^{e1}x2^{e2}...xn^{en}.
-    int* anf;
+    // Returns the anf, which is an array of length 2^n.
+    // Read-only.
+    const int* get_anf_ptr();
 
   private:
     // number of variables
@@ -176,11 +181,29 @@ class BooleanFun {
     // algebraic degree
     int degree;
 
+    // truth table of this Boolean function, of length 2^n
+    // value of f(x_1, x_2, ..., x_n) is truth_table[d(x)],
+    // where d(x) := x_1*2^{n-1}+x_2*2^{n-2}+...+x_n.
+    int* truth_table;
+
+    // algebraic normal form
+    // ANF[d(e)] is the coefficient of x1^{e1}x2^{e2}...xn^{en}.
+    int* anf;
+
+    // int array of length 2^n
+    // for temp use
+    int* tmp;
+  
+    int* fourier_transform;
+
     // Compute truth table from anf.
     void anf_to_truth_table();
 
     // Compute anf from truth table.
     void truth_table_to_anf();
+
+    //Initialization
+    void new_space(int n);
 
     // Returns the decimal representation of the given term.
     // Example terms: "x1x2x3", "x3x11".
@@ -199,6 +222,8 @@ class BooleanFun {
     // dest[x] = sum_{y <= x bitwise} source[y]
     // The summation is over GF(2).
     void mobius_inversion(int* dest, int* source);
+
+    void fast_fourier_transform(int* tt, int* Fourier_arry, int n) const;
 
     // Returns the base-2 weight of an integer， i.e., returns the
     // number of one's in its binary representation.

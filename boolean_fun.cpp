@@ -9,13 +9,11 @@ using namespace std;
 // BooleanFun constructor with parameter (number of variables)
 BooleanFun::BooleanFun(int n) {
   this->n = n;
-  truth_table = new int[1<<n];
-  anf = new int[1<<n];
-  for (int i = 0; i < (1<<n); i ++) {
-    truth_table[i] = 0;
-    anf[i] = 0;
-  }
+  this->new_space(n);
   degree = 0;
+
+  // initialize random seed
+  srand(time(NULL));
 }
 
 // Constructor with parameters, where n is the number
@@ -24,13 +22,7 @@ BooleanFun::BooleanFun(int n) {
 //   anf = "x1x2+x3+1"
 BooleanFun::BooleanFun(int n, string anf_str) {
   this->n = n;
-  truth_table = new int[1<<n];
-  anf = new int[1<<n];
-  for (int i = 0; i < (1<<n); i ++) {
-    truth_table[i] = 0;
-    anf[i] = 0;
-  }
-
+  this->new_space(n);
   this->set_anf(anf_str);
 
   // Compute truth_table using anf
@@ -44,9 +36,12 @@ void BooleanFun::copy_data(const BooleanFun& g) {
   this->degree = g.get_degree();
   anf = new int[1<<n];
   truth_table = new int[1<<n];
-
+  tmp = new int[1<<n];
+  fourier_transform= new int [1<<n];
+  
   memcpy(this->anf, g.anf, (1<<n)*sizeof(int));
   memcpy(this->truth_table, g.truth_table, (1<<n)*sizeof(int));
+  memcpy(this->fourier_transform, g.fourier_transform, (1<<n)*sizeof(int));
 }
 
 // Copy constructor.
@@ -62,9 +57,27 @@ BooleanFun& BooleanFun::operator=(const BooleanFun& g) {
   if (truth_table) {
     delete truth_table;
   }
+  if (tmp) {
+    delete tmp;
+  }
+  if (fourier_transform) {
+    delete fourier_transform;
+  }
 
   copy_data(g);
   return *this;
+}
+
+void BooleanFun::new_space(int n) {
+  truth_table = new int[1<<n];
+  anf = new int[1<<n];
+  tmp = new int[1<<n];
+  fourier_transform= new int [1<<n];
+  for (int i = 0; i < (1<<n); i ++) {
+    truth_table[i] = 0;
+    anf[i] = 0;
+    fourier_transform[i]=0;
+  }
 }
 
 // Returns the algebraic normal form of the Boolean function.
@@ -133,6 +146,27 @@ bool BooleanFun::set_truth_table(int x, int v) {
 void BooleanFun::set_truth_table_done() {
   this->truth_table_to_anf();
   this->compute_degree();
+}
+
+void BooleanFun::fast_fourier_transform(int* tt,int* Fourier_arry, int n) const{
+  int arry[(1<<n)];
+  
+  for (int m=0 ; m< (1<<n); m++) {
+    if(tt[m] == 1) {
+      Fourier_arry[m]=-1;
+    } else {
+      Fourier_arry[m]=1;
+    }
+  }
+  int i, j, k;
+  for (i = 0; i < n; ++i) {
+    for (j = 0; j < 1<<(n-1); ++j) {
+      k = j << 1;
+      arry[j] = Fourier_arry[k] + Fourier_arry[k + 1];
+      arry[j + (1<<(n-1))] = Fourier_arry[k] - Fourier_arry[k + 1];
+    }
+    memcpy(Fourier_arry, arry,  (1<<n)*sizeof(int));
+  }
 }
 
 // Resets the ANF.
@@ -291,6 +325,82 @@ int BooleanFun::get_term(std::string term) const {
   return result;
 }
 
+// Convert hexadecimal string to binary string, and 
+// set the truth_table[x] to v, where
+// x is in [0, 2^n-1], and v is 0 or 1.
+// Returns false if x or v is out of range.
+bool BooleanFun::set_truth_table_hex(string str) {
+  string sReturn;
+  unsigned int length=str.length();
+  for(int i=0;i<length;i++)
+  {
+    switch (str[i])
+    {
+      case '0': sReturn.append("0000");break;
+      case '1': sReturn.append("0001");break;
+      case '2': sReturn.append("0010");break;
+      case '3': sReturn.append("0011");break;
+      case '4': sReturn.append("0100");break;
+      case '5': sReturn.append("0101");break;
+      case '6': sReturn.append("0110");break;
+      case '7': sReturn.append("0111");break;
+      case '8': sReturn.append("1000");break;
+      case '9': sReturn.append("1001");break;
+      case 'A': sReturn.append("1010");break;
+      case 'a': sReturn.append("1010");break;
+      case 'B': sReturn.append("1011");break;
+      case 'b': sReturn.append("1011");break;
+      case 'C': sReturn.append("1100");break;
+      case 'c': sReturn.append("1100");break;
+      case 'D': sReturn.append("1101");break;
+      case 'd': sReturn.append("1101");break;
+      case 'E': sReturn.append("1110");break;
+      case 'e': sReturn.append("1110");break;
+      case 'F': sReturn.append("1111");break;
+      case 'f': sReturn.append("1111");break;
+    }
+  }
+  unsigned int length1=sReturn.length();
+  for(int i=0;i<length1;i++)
+  {
+    switch (sReturn[i])
+    {
+      case '0': truth_table[i] = 0;break;
+      case '1': truth_table[i] = 1;break;
+    }
+  }
+  return true;
+}
+
+
+string BooleanFun::get_truth_table_hex() const {
+  string result = "";
+  for(int count=0;count<(1<<n);count+=4) {
+    int i=count;
+    int num;
+    num=truth_table[i]*8+truth_table[i+1]*4+truth_table[i+2]*2+truth_table[i+3]*1;
+    switch (num) {
+      case 0: result.append("0");break;
+      case 1: result.append("1");break;
+      case 2: result.append("2");break;
+      case 3: result.append("3");break;
+      case 4: result.append("4");break;
+      case 5: result.append("5");break;
+      case 6: result.append("6");break;
+      case 7: result.append("7");break;
+      case 8: result.append("8");break;
+      case 9: result.append("9");break;
+      case 10: result.append("A");break;
+      case 11: result.append("B");break;
+      case 12: result.append("C");break;
+      case 13: result.append("D");break;
+      case 14: result.append("E");break;
+      case 15: result.append("F");break;
+    }
+  }
+  return result;
+}
+
 // The inverse of get_term()
 std::string BooleanFun::compose_term(int dec) const {
   if (dec == 0) {
@@ -342,6 +452,8 @@ BooleanFun::~BooleanFun()
 {
   delete truth_table;
   delete anf;
+  delete tmp;
+  delete fourier_transform;
 }
 
 // Returns the number of variables.
@@ -349,7 +461,7 @@ int BooleanFun::var_num() const {
   return n;
 }
 
-// Returns the base-2 weight of an integer， i.e., returns the
+// Returns the base-2 weight of an integer, i.e., returns the
 // number of one's in its binary representation.
 int BooleanFun::weight(int x) const {
   int sum = 0;
@@ -549,7 +661,7 @@ int BooleanFun::inner_product(int x, int y) const {
 // Returns the first-order nonlinearity, which is
 // 2^{n-1} - max_w |walsh_transform(w)| / 2.
 int BooleanFun::nonlinearity() const {
-  int max_w = 0;
+  /*int max_w = 0;
   int sum[(1<<n)];
   for (int w = 0; w < (1 << n); w ++) {
     sum[w] = 0;
@@ -578,13 +690,21 @@ int BooleanFun::nonlinearity() const {
     }
   }
 
-  return (1<<(n-1)) - max_w/2;
+  return (1<<(n-1)) - max_w/2;*/
+  this->fast_fourier_transform(truth_table,fourier_transform,n);
+  int max = 0;
+  for (int i = 0; i < 1<<(n); ++i) {
+    if (abs(fourier_transform[i]) > max) {
+      max = abs(fourier_transform[i]);
+    }
+  }
+  return (1<<(n-1)) - (max >> 1);
 }
 
 // Returns the rth-order nonlinearity.
 // Cut the search if existing value is > upper_bound
 int BooleanFun::nonlinearity(int r, int upper_bound) const {
-  if (r >= degree) {
+ if (r >= degree) {
     return 0;
   }
   if (r == 1) {
@@ -637,5 +757,17 @@ int BooleanFun::nonlinearity(int r, int upper_bound) const {
 // Returns the rth-order nonlinearity.
 int BooleanFun::nonlinearity(int r) const {
   return nonlinearity(r, (1<<n));
+}
+
+// Returns the truth table, which is an array of length 2^n.
+// Read-only.
+const int* BooleanFun::get_truth_table_ptr() {
+  return truth_table;
+}
+
+// Returns the anf, which is an array of length 2^n.
+// Read-only.
+const int* BooleanFun::get_anf_ptr() {
+  return anf;
 }
 

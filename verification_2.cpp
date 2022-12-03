@@ -29,13 +29,11 @@ void read_bfs_from_file(string file_name, int r, set<string> *fn_set) {
   string anf;
   int val;
   for (int i = 0; i < (1<<20); i ++)  {
-     if (!myfile.eof()) {
-      myfile >> anf;
-      myfile >> val;
-      if (val == r) {
-        fn_set->insert(anf);
-        //cout<<anf<<endl;
-      }
+    myfile >> anf;
+    myfile >> val;
+    if (val == r) {
+      fn_set->insert(anf);
+      //cout<<anf<<endl;
     }
   }
 
@@ -45,10 +43,6 @@ void read_bfs_from_file(string file_name, int r, set<string> *fn_set) {
 
 int main() {
   set<string> Ff3_12_14;
-  /*Firstly, you should use ffn_distribution.cpp to generate the Ffn3.txt, which stores 
-    all homogeneous 6-variable Boolean functions of F_fn3(k) for 8<=k<=14 (in the form of ANF);
-    Since the size of the file exceeds 200M, so that we cannot upload it to GitHub;
-  */
   read_bfs_from_file("Ffn3.txt", 12, &Ff3_12_14);
   read_bfs_from_file("Ffn3.txt", 14, &Ff3_12_14);
 
@@ -83,15 +77,16 @@ int main() {
     if (all_in) {
       cout << "Bad news!" << endl;
       cout << fn.get_anf() << endl;
-      // Store the possible homogeneous Boolean functions g of degree 3 is string set g3.
+      // Store the possible homogeneous Boolean functions g of degree 3 in set g3.
       g3.insert(fn.get_anf());
+      num++;
     }
     total_t ++;
     if (total_t % 10 == 0) {
       cout << total_t << endl;
     } 
   }
-  cout<<"num is "<<num<<endl;
+  cout<<"In Round 1, the number of possible homogeneous functions is "<<num<<endl;
 
   total_t=0;
   num=0;
@@ -120,6 +115,7 @@ int main() {
       cout << total_t << endl;
     }
   }
- cout<<"num is "<<num<<endl;
+ cout<<"The number of possible functions g for fn10||fn3+g to achieve 21 is "<<num<<endl;
+
   return 0;
 }

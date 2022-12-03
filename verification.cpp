@@ -70,8 +70,12 @@ void read_affine_trans_from_file(string file_name, int total, vector<AffineTrans
 
 int main() {
   unordered_set<string> Ff6_6;
-  read_bfs_from_file("Ff6_6.txt", 6, &Ff6_6);
+  read_bfs_from_file("Ffn6_6.txt", 6, &Ff6_6);
 
+  /*These 7 functions belong to the set F_fn6(6).
+    In order to increase the calculation speed, we can use these 7 functions to verify our result 
+    instead of total 32 functions in the set F_fn6(6).
+  */
   set<string> f6;
   f6.insert("x1x3x6");
   f6.insert("x1x3x4");
@@ -91,7 +95,7 @@ int main() {
   read_affine_trans_from_file("fn10_af.txt", 130843, &trans);
 
   int total_t = 0;
- 
+  int num = 0;
   //std::map<int,int> dist;
   clock_t tStart = clock();
   cout << "Verification... (slow)" << endl;
@@ -128,6 +132,7 @@ int main() {
         cout << "Bad news!" << endl;
         cout << aft.get_ab_str() << endl;
         cout << t_anf<<endl;
+        num++;
       }
     }
    
@@ -137,7 +142,8 @@ int main() {
      
     }
   }
-
+  
   cout << "Time taken: " << (double)(clock() - tStart)/CLOCKS_PER_SEC << " sec." << endl;
+  cout<<"The number of possible pair (A,b),g such that fn10(Ax+b)+g||fn6 with nl3=21 is "<<num<<endl;
   return 0;
 }
