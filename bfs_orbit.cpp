@@ -1,5 +1,6 @@
 #include "boolean_fun.h"
 #include "affine_trans.h"
+#include <assert.h>
 
 #include <iostream>
 #include <set>
@@ -53,12 +54,12 @@ int count_all_mod_rm36_and_save_affine(string fni) {
   // Generators for affine linear groups.
   // See "Two generators for the general linear groups over finite fields" by William C. Waterhouse
   vector<AffineTrans> generators;
-  AffineTrans *g1 = new AffineTrans(6, "[100000 010000 001000 000100 000010 100001]000000");
+  AffineTrans *g1 = new AffineTrans(6, "[100000 010000 001000 000100 000010 100001]100000");
   generators.push_back(*g1);
   AffineTrans *g2 = new AffineTrans(6, "[010000 001000 000100 000010 000001 100000]000000");
   generators.push_back(*g2);
-  AffineTrans *g3 = new AffineTrans(6, "[100000 010000 001000 000100 000010 000001]100000");
-  generators.push_back(*g3);
+  //AffineTrans *g3 = new AffineTrans(6, "[100000 010000 001000 000100 000010 000001]100000");
+  //generators.push_back(*g3);
 
   // coe list of each Boolean function, as queue
   vector<string> queue;
